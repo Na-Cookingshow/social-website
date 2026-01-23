@@ -5,6 +5,7 @@ import Header from "./Header";
 import HeroSection from './Herosection';
 import GallerySection from './GallerySection';
 import ImageDetail from './ImageDetail'
+import { galleryItems } from './GalleryData';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -45,7 +46,12 @@ function App() {
 
       {/* Image Detail Page */}
       {selectedImage && (
-        <ImageDetail image={selectedImage} onClose={handleCloseDetail} />
+        <ImageDetail 
+          image={selectedImage} 
+          onClose={handleCloseDetail}
+          allImages={galleryItems}
+          onImageSelect={handleImageClick}
+        />
       )}
 
 
