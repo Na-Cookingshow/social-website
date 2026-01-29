@@ -1,22 +1,26 @@
 import React from 'react';
 import GalleryCard from './GalleryCard';
-import { galleryItems } from './GalleryData';
 
-export default function GallerySection({onImageClick}) {
-    
+export default function GallerySection({ galleryItems, onImageClick }) {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-8">Featured Gallery</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
-        {galleryItems.map((item) => (
-          <GalleryCard
-           key={item.id} 
-           {...item} 
-           onClick={() => onImageClick(item)}
-          />
-        ))}
+    <section className="flex-1 px-6 py-8">
+      <div className="max-w-full">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Featured Gallery</h2>
+        
+        {/* Masonry grid layout - cards follow image dimensions */}
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 gap-4 space-y-4">
+          {galleryItems.map((item) => (
+            <div key={item.id} className="break-inside-avoid">
+              <GalleryCard
+                {...item} 
+                onClick={() => onImageClick(item)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
+}
+
 
